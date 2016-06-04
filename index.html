@@ -17,11 +17,11 @@
 				alert(this.sex);
 			}
 			function Worker(name,sex,job){
-				Person.call(this,name,sex);
+				Person.call(this,name,sex);//利用构造函数伪装来去继承父级的属性
 				this.job = job;
 			}
 			for(var i in Person.prototype){
-				Worker.prototype[i]=Person.prototype[i];
+				Worker.prototype[i]=Person.prototype[i];//利用原型链来继承父级的方法
 			}
 			Worker.prototype.showJob = function(){
 				alert(this.job);
