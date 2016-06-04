@@ -5,5 +5,35 @@
 		<title></title>
 	</head>
 	<body>
+		<script type="text/javascript">
+			function Person(name,sex){
+				this.name = name;
+				this.sex = sex;
+			}
+			Person.prototype.showName = function(){
+				alert(this.name);
+			}
+			Person.prototype.showSex = function(){
+				alert(this.sex);
+			}
+			function Worker(name,sex,job){
+				Person.call(this,name,sex);
+				this.job = job;
+			}
+			for(var i in Person.prototype){
+				Worker.prototype[i]=Person.prototype[i];
+			}
+			Worker.prototype.showJob = function(){
+				alert(this.job);
+			}
+			var oP = new Person('blue','男');
+			var oW = new Worker('momo','女','打杂的');
+			oP.showName();
+			oP.showSex();
+			oW.showName();
+			oW.showSex();
+			oW.showJob();
+		</script>
+		
 	</body>
 </html>
